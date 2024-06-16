@@ -51,7 +51,8 @@ const Layout = ({ children }) => {
                     {/* height: `calc(100vh - 60px)` */}
                     {/* Main content area */}
                     <Col style={{ backgroundColor: 'lightgray' }} >
-                        <Container fluid style={{ backgroundColor: 'white', marginTop: 10, marginBottom: 10, borderRadius: 8, padding: 10 }}>
+                    <Container fluid style={{ backgroundColor: 'white', marginTop: 10, borderRadius: 8, padding: 10, height: 'calc(100vh - 80px)', overflowY: 'auto', overflowX: 'hidden' }}>
+
                             {children}
                         </Container>
 

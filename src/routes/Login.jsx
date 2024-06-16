@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Post from '../peticiones/Post';
 import md5 from 'md5'
-import escudo from '../IMAGENES/escudo.png'
+import escudo from '../IMAGENES/almacen.png'
 function Login() {
     const navigate = useNavigate()
     const [cargando, setCargando] = useState(false)
@@ -73,7 +73,7 @@ function Login() {
     return (
         <>
             <div style={{
-                backgroundImage: "url('/IMAGENES/cbum.jpg')",
+                backgroundImage: "url('/IMAGENES/IMAGENES/distribucion.jpg')",
                 backgroundSize: 'cover', textAlign: 'center',
 
             }}>
