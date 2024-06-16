@@ -15,7 +15,6 @@ import {
   createHashRouter,
   RouterProvider,
 } from "react-router-dom";
-import RutinaCliente from './routes/RutinaCliente.jsx';
 import Layout from './layout.jsx';
 
 

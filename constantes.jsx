@@ -22,23 +22,23 @@ export const select_tipo_musculo = [
 ]
 export const TipoIdentificacion = [
     {
-        "value": "R", //04
+        "value": "RUC", //04
         "label": "Ruc",
     },
     {
-        "value": "C", //05
+        "value": "CEDULA", //05
         "label": "Cédula",
     },
     {
-        "value": "P", //06
+        "value": "PASAPORTE", //06
         "label": "Pasaporte",
     },
     {
-        "value": "O", //07
+        "value": "OTROS", //07
         "label": "Otros",
     },
     {
-        "value": "F", //08
+        "value": "CONSUMIDOR FINAL", //08
         "label": "Consumidor final",
     }
     // {
@@ -150,7 +150,7 @@ export const TipoPago = [
 ]
 export const MenuConstante = [
     {
-        nombre: 'Diario',
+        nombre: 'Principal',
         link: 'diarioventas',
         hijo: []
     },
@@ -213,77 +213,3 @@ export const TipoVenta = [
         value: "N"
     }
 ]
-
-const EstructuraJsonFactura = {
-    token: "",
-    firmaBase64: "",
-    claveFirma: "",
-    contribuyente: {
-        identificacion: "ruc",
-        direccion: "direccion",
-        obliga_contabilidad: "S | N",
-        n_resolucion: "",
-        es_agente_retencion: "S | N",
-        resolucion_age_retencion: "N° de resolucion, es obligatorio",
-        es_rimpe: "'P'|| 'R'  || 'N' ",
-        ubicacion: "direccion del establecimiento",
-        nombre_comercial: "nombre comercial",
-        ambiente: " '1' para el ambiente de produccion  || '2' para el ambiente de pruebas",
-        codDoc: "01",
-    },
-    factura: {
-        fechaEmision: "YYYY-MM-DD",
-        establecimiento: "001",
-        punto: "003",
-        secuencia: "10",
-        TipoIdentificacion: "'C':cedula || 'R': ruc || 'P':pasaporte || 'O':otros || 'F': consumido final",
-        identificacionCliente: "consumidoFinal:9999999999999 || cualquier tipo de identificacion",
-        nombreCliente: "",
-        direcicionCliente: "S/D",
-    },
-    productos: [{
-        codigo: "codigo unico del producto",
-        nombreProducto: "nombre del producto",
-        porcentajeIva: "porcentaje iva respuesta: 0 || 12 || 8 ",
-        precioUnitario: "precio sin iva del producto",
-        cantidad: "cantidad de productos, esto debe ser mayor a 0",
-        porcentajeDescuento: "porcentaje de descuento, si no tiene descuento enviar 0",
-        informacionAdicional1: "",
-        informacionAdicional2: "",
-    }],
-
-    formaPago: [
-        {
-            codigoSri: "son los codigos ya acordado",
-            total: "total del pago"
-        }
-    ],
-    informacionAdicion: []
-}
-
-
-const jsonRod = {
-    contribuyente: {
-
-        obliga_contabilidad: "en caso de ser obligado a llevar contabilidad respuesta: S | N",
-        n_resolucion: "si es contribuyente especia en caso de no se puede enviar null o vacio",
-        es_agente_retencion: "en caso de ser agente de retencion, respuesta: S | N",
-        resolucion_age_retencion: "si es agente de retencion tiene que poner el N° de resolucion, es obligatorio",
-        es_rimpe: "en caso de ser rimpe tiene que enviar: 'P' si es NEGOCIO POPULAR || 'R' si es RÉGIMEN RIMPE  || 'N' si no es rimpe",
-        ubicacion: "direccion del establecimiento",
-        nombre_comercial: "nombre comercial de la empresa si no tiene enviar la misma razon social",
-        ambiente: " '1' para el ambiente de produccion  || '2' para el ambiente de pruebas",
-        codDoc: "codigo del documento, como es factura enviar '01' siempre",
-    },
-    factura: {
-        fechaEmision: "fecha de la factura, formato: YYYY-MM-DD",
-        establecimiento: "001 siempre 3 digitos",
-        punto: "003 siempre 3 digitos",
-        secuencia: "10",
-        TipoIdentificacion: "'C':cedula || 'R': ruc || 'P':pasaporte || 'O':otros || 'F': consumido final",
-        identificacionCliente: "consumidoFinal:9999999999999 || cualquier tipo de identificacion",
-        nombreCliente: "nombre del cliente ||  empresa  || 'CONSUMIDOR FINAL' en caso de ser consumido final",
-        direcicionCliente: "direccion del cliente || emrpresa || S/D",
-    }
-
-}
