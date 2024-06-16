@@ -1,25 +1,6 @@
 export const URL_DOMINIO = 'https://controlsoft.app/'
-export const select_dia = [
-    { value: '1', label: 'LUNES' },
-    { value: '2', label: 'MARTES' },
-    { value: '3', label: 'MIERCOLES' },
-    { value: '4', label: 'JUEVES' },
-    { value: '5', label: 'VIERNES' },
-    { value: '6', label: 'SABADO' },
-    { value: '7', label: 'DOMINGO' }
-]
-export const select_tipo_musculo = [
-    { value: '1', label: 'HOMBROS' },
-    { value: '2', label: 'BICEPS' },
-    { value: '3', label: 'TRICEPS' },
-    { value: '4', label: 'ESPALDA' },
-    { value: '5', label: 'ANTEBRAZOS' },
-    { value: '6', label: 'CUADRICEP' },
-    { value: '7', label: 'FEMORAL' },
-    { value: '8', label: 'GLUTEO' },
-    { value: '9', label: 'PANTORILLA' },
-    { value: '10', label: 'PECHO' },
-]
+
+
 export const TipoIdentificacion = [
     {
         "value": "RUC", //04

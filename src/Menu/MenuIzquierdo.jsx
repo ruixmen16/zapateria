@@ -3,9 +3,13 @@ import React, { useEffect, useState } from 'react'
 import Nav from 'react-bootstrap/Nav';
 import { MenuConstante } from '../../constantes';
 import { Accordion, Card, ListGroup, Table } from 'react-bootstrap';
+import CanvasDeudores from '../complementos/CanvasDeudores';
+import CanvasFacturas from '../complementos/CanvasFacturas';
 
 
 function MenuIzquierdo({ busqueda }) {
+  const [dialogoFacturas, setDialogoFacturas] = useState(false);
+  const [dialogoDeudores, setDialogoDeudores] = useState(false);
 
   const navigate = useNavigate()
   const [tipoUsuario, setTipoUsuario] = useState('')
@@ -25,6 +29,9 @@ function MenuIzquierdo({ busqueda }) {
 
   return (
     <>
+      <CanvasDeudores setShow={setDialogoDeudores} titulo="Titulo" show={dialogoDeudores} ></CanvasDeudores>
+      <CanvasFacturas setShow={setDialogoFacturas} titulo="Titulo" show={dialogoFacturas} ></CanvasFacturas>
+
 
 
 
@@ -34,13 +41,23 @@ function MenuIzquierdo({ busqueda }) {
 
           return (
 
-            <Nav.Link key={index} style={{ paddingLeft: 19, marginTop: 15 }} as={NavLink}  to={"/" + papa.link}>{papa.nombre}</Nav.Link>
+            <Nav.Link key={index} style={{ paddingLeft: 19, marginTop: 15 }} as={NavLink} to={"/" + papa.link}>{papa.nombre}</Nav.Link>
           )
 
 
         }
         )
       }
+      <Nav.Link style={{ paddingLeft: 19, marginTop: 15 }} as={NavLink} onClick={() => {
+        setDialogoDeudores(true)
+      }
+      }>Pagos pendientes</Nav.Link>
+      <Nav.Link style={{ paddingLeft: 19, marginTop: 15 }} as={NavLink} onClick={() => {
+        setDialogoFacturas(true)
+      }
+      } >Historial de facturas</Nav.Link>
+
+
       <Accordion flush style={{ marginTop: 5 }}>
 
         {

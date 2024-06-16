@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
                 <Row >
                     {/* Sidebar */}
                     {
-                        !isMobile && <Col md={2} style={{ height: `calc(100vh - 60px)`, padding: 0 }}>
+                        !isMobile && <Col sm={1} style={{ height: `calc(100vh - 60px)`, padding: 0 }}>
                             <Col style={{ padding: 10 }}>
                                 <label htmlFor=""><strong>MENU</strong></label>
                                 <input
@@ -51,7 +51,7 @@ const Layout = ({ children }) => {
                     {/* height: `calc(100vh - 60px)` */}
                     {/* Main content area */}
                     <Col style={{ backgroundColor: 'lightgray' }} >
-                    <Container fluid style={{ backgroundColor: 'white', marginTop: 10, borderRadius: 8, padding: 10, height: 'calc(100vh - 80px)', overflowY: 'auto', overflowX: 'hidden' }}>
+                        <Container fluid style={{ backgroundColor: 'white', marginTop: 10, borderRadius: 8, padding: 10, height: 'calc(100vh - 80px)', overflowY: 'auto', overflowX: 'hidden' }}>
 
                             {children}
                         </Container>
