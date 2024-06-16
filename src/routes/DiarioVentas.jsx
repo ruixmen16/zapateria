@@ -164,28 +164,42 @@ export default function DiarioVentas() {
                     {
                         productosFiltrados.map((item, index) => (
 
-                            <div key={index} className='movie-poster'>
+                            <div key={index} className='movie-poster' >
 
 
-                                <div
-                                    onClick={() => AnadirListaProductos(item)}
-                                    style={{
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        maxHeight: 150,
-                                        cursor: 'pointer'
-                                    }}>
-                                    <Image
-
-                                        fluid
+                                <div style={{ position: 'relative', maxHeight: 200, cursor: 'pointer' }}>
+                                    <div
+                                        onClick={() => AnadirListaProductos(item)}
                                         style={{
-                                            width: '100%',
-                                            objectFit: 'contain'
-                                        }}
-                                        rounded src={URL_DOMINIO + item.imagen} />
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            maxHeight: 150
+                                        }}>
+                                        <Image
+                                            fluid
+                                            style={{
+                                                width: '100%',
+                                                objectFit: 'contain'
+                                            }}
+                                            rounded
+                                            src={URL_DOMINIO + item.imagen}
+                                        />
+                                    </div>
+                                    <div style={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        right: 0,
+                                        marginTop: 10,
+                                        backgroundColor: 'greenyellow',
+                                        color: 'black',
+                                        padding: '5px',
+                                        borderRadius: '5px',
+                                        fontWeight: 'bold'
+                                    }}>
+                                        $ {(item.precio).toFixed(2)}
+                                    </div>
+                                    <span><strong>{item.nombre}</strong></span>
                                 </div>
-                                <span><strong>{item.nombre}</strong></span>
-                                <p>$ {(item.precio).toFixed(2)}</p>
                             </div>
 
                         ))
@@ -198,46 +212,49 @@ export default function DiarioVentas() {
 
 
                     {
-                        productosEscogidos.length > 0 && <Col sm={9}>
-                            <label><strong>Productos escogidos</strong></label>
-                        </Col>
-                    }
-                    <Col sm={3}>
-                        <InputGroup>
+                        productosEscogidos.length > 0 && <>
+                            <Col sm={9}>
+                                <h4>PRODUCTOS ESCOGIDOS</h4>
+                            </Col>
+                            <Col sm={3}>
+                                <InputGroup>
 
-                            <Form.Control
-                                type="number"
-                                required
-                                name="descuentoglobal"
-                                placeholder="Desct. global"
-                                value={descuentoglobal}
-                                onChange={
-                                    (e) => {
-                                        const value = e.target.value;
+                                    <Form.Control
+                                        type="number"
+                                        required
+                                        name="descuentoglobal"
+                                        placeholder="Desct. global"
+                                        value={descuentoglobal}
+                                        onChange={
+                                            (e) => {
+                                                const value = e.target.value;
 
-                                        // Validaciones
-                                        if (value === "" || value > 100 || value < 0) {
-                                            return;
+                                                // Validaciones
+                                                if (value === "" || value > 100 || value < 0) {
+                                                    return;
+                                                }
+
+                                                const nuevoDescuento = parseFloat(value);
+
+                                                // Actualizar descuento global
+                                                setDescuentoGlobal(nuevoDescuento);
+
+                                                // Crear una copia de productosEscogidos y actualizar los descuentos
+                                                const nuevosProductosEscogidos = productosEscogidos.map((producto) => ({
+                                                    ...producto,
+                                                    descuento: nuevoDescuento
+                                                }));
+
+                                                // Actualizar el estado
+                                                setProductosEscogidos(nuevosProductosEscogidos);
+                                            }
                                         }
+                                    />
+                                </InputGroup>
+                            </Col>
+                        </>
+                    }
 
-                                        const nuevoDescuento = parseFloat(value);
-
-                                        // Actualizar descuento global
-                                        setDescuentoGlobal(nuevoDescuento);
-
-                                        // Crear una copia de productosEscogidos y actualizar los descuentos
-                                        const nuevosProductosEscogidos = productosEscogidos.map((producto) => ({
-                                            ...producto,
-                                            descuento: nuevoDescuento
-                                        }));
-
-                                        // Actualizar el estado
-                                        setProductosEscogidos(nuevosProductosEscogidos);
-                                    }
-                                }
-                            />
-                        </InputGroup>
-                    </Col>
                     <Col className="my-1" sm={12} style={{ maxHeight: 411, overflowY: "auto" }}>
                         {
                             productosEscogidos.length > 0 &&
@@ -253,9 +270,9 @@ export default function DiarioVentas() {
 
                                         <th style={{ width: '10%' }}>DESCUENTO</th>
 
-                                        <th >TOTAL SIN IVA</th>
+                                        <th >SIN IVA</th>
                                         <th >IVA</th>
-                                        <th >TOTAL CON IVA</th>
+                                        <th >TOTAL</th>
 
                                     </tr>
                                 </thead>
@@ -402,7 +419,7 @@ export default function DiarioVentas() {
                                                     <td style={{ textAlign: 'right', verticalAlign: 'middle' }}>${(item.precio).toFixed(2)}</td>
 
                                                     <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>
-                                                        <input className="form-class" type="number" value={item.descuento} onChange={(e) => {
+                                                        <input style={{ maxWidth: 60 }} className="form-class" type="number" value={item.descuento} onChange={(e) => {
 
                                                             const value = e.target.value;
                                                             if (value === "" || value > 100 || value < 0) {

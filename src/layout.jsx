@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
                 <Row >
                     {/* Sidebar */}
                     {
-                        !isMobile && <Col sm={1} style={{ height: `calc(100vh - 60px)`, padding: 0 }}>
+                        !isMobile && <Col sm={2} style={{ height: `calc(100vh - 60px)`, padding: 0 }}>
                             <Col style={{ padding: 10 }}>
                                 <label htmlFor=""><strong>MENU</strong></label>
                                 <input
