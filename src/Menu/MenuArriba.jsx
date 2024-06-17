@@ -49,7 +49,7 @@ function MenuTelefono() {
                     {nombrePersona}
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls='offcanvasNavbar-expand-false' />
-                <Navbar.Offcanvas id='offcanvasNavbar-expand-false'
+                <Navbar.Offcanvas style={{ width: '70vw' }} id='offcanvasNavbar-expand-false'
                     aria-labelledby='offcanvasNavbarLabel-expand-false'
                     placement='end'
                 >
@@ -58,7 +58,7 @@ function MenuTelefono() {
                             Menú
                         </Offcanvas.Title>
                     </Offcanvas.Header>
-                    <Offcanvas.Body>
+                    <Offcanvas.Body >
                         <Nav className="justify-content-end flex-grow-1 pe-3" >
                             {
                                 isMobile && MenuConstante.filter(x => x.hijo.length != 0).map((papa, index) => {
